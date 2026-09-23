@@ -1,0 +1,21 @@
+package com.ecom.ecom.Config;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+
+public class openConfig {
+
+    @Bean
+    public OpenAPI openAPI() {
+
+        return  new OpenAPI().info(new Info().title("Travel Management").version("v1").description("Api for Category and Product plan"));
+    }
+}

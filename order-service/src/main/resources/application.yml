@@ -1,0 +1,91 @@
+spring:
+  application:
+    name: order-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/order_db
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  main:
+    banner-mode: OFF
+
+
+server:
+  port: 8083
+
+
+springdoc:
+  api-docs:
+    path: /api/v1/docs
+
+  swagger-ui:
+    path: /swagger-ui.html
+
+
+logging:
+
+  # -----------------------------
+  # LOG LEVELS
+  # -----------------------------
+  level:
+    root: INFO
+
+    # Logs from our Order Service code
+    com.ecom.order_service: DEBUG
+
+    # Hibernate SQL
+    org.hibernate.SQL: DEBUG
+
+    # SQL parameter values
+    org.hibernate.orm.jdbc.bind: TRACE
+
+
+  # -----------------------------
+  # LOG FILE
+  # -----------------------------
+  file:
+    name: logs/order-service.log
+
+
+  # -----------------------------
+  # LOG FORMAT
+  # -----------------------------
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] - %msg%n"
+
+
+  # -----------------------------
+  # LOG ROTATION
+  # -----------------------------
+  logback:
+    rollingpolicy:
+
+      file-name-pattern: "/order-service/logs/order-service.%d{yyyy-MM-dd}.%i.log.gz"
+
+      max-file-size: 10MB
+
+      max-history: 30
+
+      total-size-cap: 1GB
+
+product:
+  service:
+    url: "http://localhost:8081/api/product"
+
+inventory:
+  service:
+    url: "http://localhost:8082"
+
+payment:
+  service:
+    url: "http://localhost:8084"

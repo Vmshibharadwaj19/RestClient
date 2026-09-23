@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: true
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  output:
+    ansi:
+      enabled: always
+
+  main:
+    banner-mode: off
+
+logging:
+  file:
+    name: application.log
+
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] - %msg%n"
+    console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] - %msg%n"
+
+  logback:
+    rollingpolicy:
+      file-name-pattern: "application.%d{yyyy-MM-dd}.%i.log.gz"
+      max-file-size: 10MB
+      max-history: 30
+
+
+server:
+  port: 8081
+
+plan:
+  module:
+    messages:
+      success: Success
+      failure: Failed
